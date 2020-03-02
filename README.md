@@ -5,6 +5,8 @@
 ## はじめに
 VRM4U はVRMファイルのインポーター兼ランタイムローダーです
 
+**※配布用のexe作成、モバイル実行には、ソースリポジトリのデータが必要です。** 後述の手順を参照ください。
+
 詳細はこちらから
 https://github.com/ruyo/VRM4U/wiki/VRM4U
 
@@ -27,7 +29,7 @@ https://github.com/ruyo/VRM4U/wiki/VRM4U
      - 描画はForward/Deferred両方に対応しています。
 
 ## 動作環境
- - UE4.20、UE4.21、UE4.22、UE4.23
+ - UE4.20〜UE4.24
  - UE4.19も動きますが、マテリアルは生成されません。
 
 ## 使い方
@@ -66,6 +68,8 @@ MIT(VRM4U)
 ### ソース
 UE4アカウントの紐づけが必要です。
 
+ライセンスの都合上、念の為EpicGamesアカウント紐付けにしています。手間ですみません。。
+
 https://github.com/ruyo/UnrealEngine_VRM4UPlugin （404エラーページが出る場合は[こちらより紐付けをしてください](https://www.unrealengine.com/ja/blog/updated-authentication-process-for-connecting-epic-github-accounts)）
 
 https://github.com/ruyo/assimp
@@ -75,6 +79,31 @@ https://github.com/ruyo/assimp
 ありがとうございます。
 
 ### リリース履歴
+- 2020/02/29
+    - MatCap計算をピクセル法線から頂点法線に変更した。
+    - ステンシルマスクを利用できるようにした。
+    - CharacterBaseへ外からAnimSequenceのみ差し替えできるようにした。
+    - 他Skeletonからソケットをコピーできるようにした。
+- 2020/02/19
+    - Aポーズ時のIKBoneがTポーズ位置のままなのを修正した。
+    - Skeletonの複製時にリターゲットモードが初期化されるのを修正した。
+- 2020/02/18
+    - 嘘パース機能を追加した。サンプルマップを追加した。
+    - AdvancedLocomotionSystem向けの機能を追加した。
+    - (IKBone追加、VirtualBoneコピー、UE4Mannequinの骨名でスケルトン作成）
+- 2020/01/14
+    - **※要再インポート**
+    - VRMSpringBoneのメンバ変数名を変更した
+    - 出力ファイル名にプレフィクスを追加した(VA_, VM_, VL_ の3種)
+    - カスタムアセットのサムネイル表示を追加した
+    - コンフィグより任意の拡張子のファイルをassimpでロード可能にした
+- 2019/12/31
+    - インポート時に最適化（未使用頂点の削除、同一マテリアルのPrimitiveをマージ）するようにした
+    - モバイル用シェーダのLowクオリティ設定を、より軽量化した。
+- 2019/12/11
+    - UE4.24に対応した
+    - Editorでライトが動作するようにした。
+    - ライトサンプルを追加した。
 - 2019/12/01
     - 法線補正をカメラ方向に変更した。（従来はライト方向）
     - エディタモードでキャラライトがカメラ座標を参照して動作するようにした。
